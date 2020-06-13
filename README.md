@@ -36,4 +36,4 @@ series-sum methods.
 
 ## Pull Request link
 
-Coming Soon!
+https://github.com/kaliadevansh/math-series/pull/1
