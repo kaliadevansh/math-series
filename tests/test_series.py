@@ -1,6 +1,6 @@
 import pytest
 
-from math_series.series import fibonacci, lucas
+from math_series.series import fibonacci, lucas, sum_series
 
 
 # fibonacci tests
@@ -104,3 +104,115 @@ def test_lucas_none():
 def test_lucas_negative():
     with pytest.raises(IndexError):
         lucas(-1)
+
+
+# sum series tests
+
+def test_sum_series_0_fib():
+    actual = sum_series(0)
+    expected = fibonacci(0)
+    assert actual == expected
+
+
+def test_sum_series_1_fib():
+    actual = sum_series(1)
+    expected = fibonacci(1)
+    assert actual == expected
+
+
+def test_sum_series_2_fib():
+    actual = sum_series(2)
+    expected = fibonacci(2)
+    assert actual == expected
+
+
+def test_sum_series_3_fib():
+    actual = sum_series(3)
+    expected = fibonacci(3)
+    assert actual == expected
+
+
+def test_sum_series_7_fib():
+    actual = sum_series(7)
+    expected = fibonacci(7)
+    assert actual == expected
+
+
+def test_sum_series_0_lucas():
+    actual = sum_series(0, 2, 1)
+    expected = lucas(0)
+    assert actual == expected
+
+
+def test_sum_series_1_lucas():
+    actual = sum_series(1, 2, 1)
+    expected = lucas(1)
+    assert actual == expected
+
+
+def test_sum_series_2_lucas():
+    actual = sum_series(2, 2, 1)
+    expected = lucas(2)
+    assert actual == expected
+
+
+def test_sum_series_3_lucas():
+    actual = sum_series(3, 2, 1)
+    expected = lucas(3)
+    assert actual == expected
+
+
+def test_sum_series_7_lucas():
+    actual = sum_series(7, 2, 1)
+    expected = lucas(7)
+    assert actual == expected
+
+
+def test_sum_series_0_random():
+    actual = sum_series(0, 13, 27)
+    expected = 13
+    assert actual == expected
+
+
+def test_sum_series_1_random():
+    actual = sum_series(1, 13, 27)
+    expected = 27
+    assert actual == expected
+
+
+def test_sum_series_2_random():
+    actual = sum_series(2, 13, 27)
+    expected = 40
+    assert actual == expected
+
+
+def test_sum_series_3_random():
+    actual = sum_series(3, 13, 27)
+    expected = 27 + 13 + 27
+    assert actual == expected
+
+
+def test_sum_series_7_random():
+    actual = sum_series(7, 13, 27)
+    expected = 13 * 27 + 8 * 13
+    assert actual == expected
+
+
+def test_sum_series_float():
+    with pytest.raises(TypeError):
+        sum_series(7.7)
+
+
+def test_sum_series_string():
+    with pytest.raises(TypeError):
+        sum_series("7")
+
+
+def test_sum_series_none():
+    with pytest.raises(TypeError):
+        sum_series(None)
+
+
+def test_sum_series_negative():
+    with pytest.raises(IndexError):
+        sum_series(-1)

@@ -31,3 +31,27 @@ def lucas(n):
     elif n > 1:
         return lucas(n - 1) + lucas(n - 2)
     return 2 - n
+
+
+def sum_series(element_index, first_element=0, second_element=1):
+    """
+    This function returns the nth element of a sum series. The function is built using recursion.
+    The first two elements of the series are expected as inputs (or the series acts as fibonacci). The function
+    calculates the n-th number of the series.
+    :param element_index: index of element to be calculated.
+    :param first_element: first element of the sum series. Optional - defaults to 0.
+    :param second_element: second element of the sum series. Optional - defaults to 1.
+    :return: n-th number of the sum-series.
+    """
+    if not isinstance(element_index, int):
+        raise TypeError()
+    elif element_index < 0:
+        raise IndexError()
+    elif element_index == 0:
+        return first_element
+    elif element_index == 1:
+        return second_element
+    elif element_index > 1:
+        return sum_series(element_index - 1, first_element, second_element) + sum_series(element_index - 2,
+                                                                                         first_element,
+                                                                                         second_element)
